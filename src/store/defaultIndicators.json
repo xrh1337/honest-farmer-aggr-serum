@@ -1,0 +1,279 @@
+{
+  "price": {
+    "enabled": true,
+    "name": "Price",
+    "script": "plotcandlestick(avg_ohlc(bar))",
+    "options": {
+      "priceScaleId": "right",
+      "priceLineVisible": true,
+      "lastValueVisible": true,
+      "borderVisible": true,
+      "upColor": "rgba(100, 157, 102, 0)",
+      "downColor": "rgb(156,52,62)",
+      "borderUpColor": "rgb(59, 202, 109)",
+      "borderDownColor": "rgb(239,67,82)",
+      "wickUpColor": "rgb(59, 202, 109)",
+      "wickDownColor": "rgb(239,67,82)"
+    }
+  },
+  "smas": {
+    "name": "SMA {fastLength} {mediumLength} {slowLength}",
+    "displayName": "SMA 50 100 200",
+    "script": "plotline(sma($price.close, options.fastLength), color=options.fastColor)\nplotline(sma($price.close, options.mediumLength), color=options.mediumColor)\nplotline(sma($price.close, options.slowLength), color=options.slowColor)",
+    "options": {
+      "priceScaleId": "right",
+      "fastLength": 50,
+      "mediumLength": 100,
+      "slowLength": 200,
+      "fastColor": "#42a5f5",
+      "mediumColor": "#64b5f6",
+      "slowColor": "#90caf9"
+    }
+  },
+  "emas": {
+    "name": "EMA {fastLength} {mediumLength} {slowLength}",
+    "displayName": "EMA 50 100 200",
+    "script": "plotline(ema($price.close, options.fastLength), color=options.fastColor)\nplotline(ema($price.close, options.mediumLength), color=options.mediumColor)\nplotline(ema($price.close, options.slowLength), color=options.slowColor)",
+    "options": {
+      "priceScaleId": "right",
+      "fastLength": 50,
+      "mediumLength": 100,
+      "slowLength": 200,
+      "fastColor": "#42a5f5",
+      "mediumColor": "#64b5f6",
+      "slowColor": "#90caf9"
+    }
+  },
+  "cmas": {
+    "name": "CMA {fastLength} {mediumLength} {slowLength}",
+    "displayName": "CMA 50 100 200",
+    "script": "plotline(cma($price.close, options.fastLength), color=options.fastColor)\nplotline(cma($price.close, options.mediumLength), color=options.mediumColor)\nplotline(cma($price.close, options.slowLength), color=options.slowColor)",
+    "options": {
+      "priceScaleId": "right",
+      "fastLength": 50,
+      "mediumLength": 100,
+      "slowLength": 200,
+      "fastColor": "#42a5f5",
+      "mediumColor": "#64b5f6",
+      "slowColor": "#90caf9"
+    }
+  },
+  "volume": {
+    "enabled": true,
+    "name": "Volume",
+    "script": "plothistogram({ time: time, value: vbuy + vsell, color: vbuy > vsell ? options.upColor : options.downColor})",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "upColor": "rgba(59, 202, 109, .5)",
+      "downColor": "rgba(235, 30, 47, .5)",
+      "priceScaleId": "volume",
+      "scaleMargins": {
+        "top": 0.84,
+        "bottom": 0
+      }
+    }
+  },
+  "volume_delta": {
+    "enabled": true,
+    "name": "Volume Δ",
+    "script": "plothistogram({ time: time, value: Math.abs(vbuy-vsell), color: vbuy - vsell > 0 ? options.upColor : options.downColor})",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "upColor": "#3BCA6D",
+      "downColor": "#EB1E2F",
+      "priceScaleId": "volume",
+      "scaleMargins": {
+        "top": 0.84,
+        "bottom": 0
+      }
+    }
+  },
+  "volume_buy_sell": {
+    "name": "Buy/sells volume",
+    "script": "plotcloudarea(-vsell, vbuy)\nplotline(0, color=rgba(255,255,255,.25), lineStyle=2)",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "upColor": "#3BCA6D",
+      "downColor": "#EB1E2F",
+      "priceScaleId": "volume",
+      "scaleMargins": {
+        "top": 0.84,
+        "bottom": 0
+      }
+    }
+  },
+  "liquidations": {
+    "enabled": true,
+    "name": "Liquidations",
+    "script": "plothistogram(lbuy, color=options.upColor)\nplothistogram(-lsell, color=options.downColor)",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "priceScaleId": "volume_liquidations",
+      "upColor": "rgb(255,76,243)",
+      "downColor": "rgb(255,183,77)",
+      "scaleMargins": {
+        "top": 0.75,
+        "bottom": 0.17
+      }
+    }
+  },
+  "cvd": {
+    "enabled": true,
+    "name": "CVD",
+    "description": "Cumulative Volume Delta",
+    "script": "plotline(cum(vbuy - vsell))",
+    "options": {
+      "priceScaleId": "cvd",
+      "priceFormat": {
+        "type": "volume"
+      },
+      "color": "#3BCA6D",
+      "scaleMargins": {
+        "top": 0.84,
+        "bottom": 0
+      }
+    }
+  },
+  "btccvdperp": {
+    "name": "CVD (BTC PERP)",
+    "script": "line(cum((BINANCE_FUTURES:btcusdt.vbuy+BINANCE_FUTURES:btcusd_perp.vbuy+BITFINEX:BTCF0:USTF0.vbuy+BITMEX:XBTUSD.vbuy+BYBIT:BTCUSD.vbuy+BYBIT:BTCUSDT.vbuy+DERIBIT:BTC-PERPETUAL.vbuy+FTX:BTC-PERP.vbuy+HUOBI:BTC-USD.vbuy+KRAKEN:PI_XBTUSD.vbuy+OKEX:BTC-USDT-SWAP.vbuy+OKEX:BTC-USD-SWAP.vbuy)- (BINANCE_FUTURES:btcusdt.vsell+BINANCE_FUTURES:btcusd_perp.vsell+BITFINEX:BTCF0:USTF0.vsell+BITMEX:XBTUSD.vsell+BYBIT:BTCUSD.vsell+BYBIT:BTCUSDT.vsell+DERIBIT:BTC-PERPETUAL.vsell+FTX:BTC-PERP.vsell+HUOBI:BTC-USD.vsell+KRAKEN:PI_XBTUSD.vsell+OKEX:BTC-USDT-SWAP.vsell+OKEX:BTC-USD-SWAP.vsell)), title=CVD:BTC:PERP)",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "priceScaleId": "cvdperp",
+      "color": "#42a5f5"
+    }
+  },
+  "btccvdspot": {
+    "name": "CVD (BTC SPOT)",
+    "script": "line(cum((BINANCE:btcusdt.vbuy+BINANCE:btcusdc.vbuy+BITFINEX:BTCUSD.vbuy+BITSTAMP:btcusd.vbuy+BITSTAMP:btcusdt.vbuy+BITSTAMP:btcusdc.vbuy+COINBASE:BTC-USDC.vbuy+COINBASE:BTC-USD.vbuy+COINBASE:BTC-USDT.vbuy+FTX:BTC/USD.vbuy+FTX:BTC/USDT.vbuy+HUOBI:btcusdt.vbuy+HUOBI:btcusdc.vbuy+KRAKEN:XBT/USDC.vbuy+KRAKEN:XBT/USDT.vbuy+KRAKEN:XBT/USD.vbuy+OKEX:BTC-USDT.vbuy+OKEX:BTC-USDC.vbuy+POLONIEX:USDT_BTC.vbuy+POLONIEX:USDC_BTC.vbuy)-(BINANCE:btcusdt.vsell+BINANCE:btcusdc.vsell+BITFINEX:BTCUSD.vsell+BITSTAMP:btcusd.vsell+BITSTAMP:btcusdt.vsell+BITSTAMP:btcusdc.vsell+COINBASE:BTC-USDC.vsell+COINBASE:BTC-USD.vsell+COINBASE:BTC-USDT.vsell+FTX:BTC/USD.vsell+FTX:BTC/USDT.vsell+HUOBI:btcusdt.vsell+HUOBI:btcusdc.vsell+KRAKEN:XBT/USDC.vsell+KRAKEN:XBT/USDT.vsell+KRAKEN:XBT/USD.vsell+OKEX:BTC-USDT.vsell+OKEX:BTC-USDC.vsell+POLONIEX:USDT_BTC.vsell+POLONIEX:USDC_BTC.vsell)), title=CVD:BTC:SPOT)",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "priceScaleId": "cvdspot",
+      "color": "#4caf50"
+    }
+  },
+  "ctd": {
+    "script": "plotline(cum(cbuy-csell))",
+    "name": "CTD",
+    "description": "Cumulative Trades Delta",
+    "options": {
+      "priceScaleId": "ctd",
+      "lineStyle": 4,
+      "lineWidth": 1
+    }
+  },
+  "cld": {
+    "script": "plotline(cum(lbuy-lsell))",
+    "name": "CLD",
+    "description": "Cumulative Liquidations Delta",
+    "options": {
+      "priceFormat": {
+        "type": "volume"
+      },
+      "color": "rgb(156,39,176)",
+      "priceScaleId": "ctd",
+      "lineWidth": 1,
+      "scaleMargins": {
+        "top": 0.75,
+        "bottom": 0.17
+      }
+    }
+  },
+  "linregcurve": {
+    "script": "plotline(linreg($price.close, 50))\nplotline(linreg($price.close, 100))\nplotline(linreg($price.close, 200))",
+    "name": "Linear Regression",
+    "options": {
+      "priceScaleId": "right",
+      "lineStyle": 4,
+      "lineWidth": 1
+    }
+  },
+  "allmarkets": {
+    "script": "plotline(BITFINEX:BTCUSD.close, color=#97c554, title=Bitfinex.spot)\nplotline(BINANCE:btcusdt.close, color=#f3ba2f, title=Binance.spot)\nplotline(OKEX:BTC-USDT.close, color=#5894f2, title=Okex.spot)\nplotline(KRAKEN:XBT/USD.close, color=#5841d8, title=Kraken.spot)\nplotline(COINBASE:BTC-USD.close, color=#0e70e2, title=Coinbase.spot)\nplotline(POLONIEX:USDT_BTC.close, color=#858b8f, title=Poloniex.spot)\nplotline(HUOBI:btcusdt.close, color=#2ca6e0, title=Huobi.spot)\nplotline(BITSTAMP:btcusd.close, color=#169f4a, title=Bitstamp.spot)\nplotline(BITMEX:XBTUSD.close, color=#595fb5, title=Bitmex.perp)\nplotline(BITFINEX:BTCF0:USTF0.close, color=#97c554, title=Bitfinex.perp)\nplotline(OKEX:BTC-USD-SWAP.close, color=#5894f2, title=Okex.perp)\nplotline(BINANCE_FUTURES:btcusdt.close, color=#f3ba2f, title=Binance.perp)\nplotline(BINANCE_FUTURES:btcusd_perp.close, color=#f3ba2f, title=Binance.perp)\nplotline(HUOBI:BTC-USD.close, color=#2ca6e0, title=Huobi.perp)\nplotline(KRAKEN:PI_XBTUSD.close, color=#5841d8, title=Kraken.perp)\nplotline(DERIBIT:BTC-PERPETUAL.close, color=#2dae9a, title=Deribit.perp)\nplotline(FTX:BTC-PERP.close, color=#02a6c2, title=Ftx.perp)\nplotline(BYBIT:BTCUSD.close, color=#f9b600, title=Bybit.perp)",
+    "name": "All markets",
+    "options": {
+      "priceScaleId": "right",
+      "spotColor": "#81c784",
+      "futuresColor": "#ec407a"
+    }
+  },
+  "ichimoku": {
+    "script": "conversionLine=(lowest($price.low, options.conversionLineLength) + highest($price.high, options.conversionLineLength)) / 2\nbaseLine=(lowest($price.low, options.baseLineLength) + highest($price.high, options.baseLineLength)) / 2\nleadLineOne=(conversionLine + baseLine) / 2\nleadLineTwo=(lowest($price.low, options.laggingSpanTwoLength) + highest($price.high, options.laggingSpanTwoLength)) / 2\nplotcloudarea(leadLineTwo, leadLineOne, offset=options.displacement)",
+    "name": "Ichimoku",
+    "options": {
+      "baseLineLength": 26,
+      "conversionLineLength": 9,
+      "displacement": 24,
+      "laggingSpanTwoLength": 52,
+      "priceScaleId": "right"
+    }
+  },
+  "bollinger_bands": {
+    "script": "a = sma(Math.pow($price.close,2),options.length)\nb = Math.pow(sum($price.close,options.length),2)/Math.pow(options.length,2)\nstdev = Math.sqrt(a - b)\nsrc = $price.close\n\nbasis = sma($price.close, options.length)\ndev = options.mult * stdev\nupper = basis + dev\nlower = basis - dev\n\nplotline(basis, color=options.basisColor)\nplotcloudarea(lower, upper)",
+    "name": "Bollinger Bands",
+    "options": {
+      "priceScaleId": "right",
+      "mult": 2,
+      "length": 20,
+      "lineStyle": 2,
+      "basisColor": "rgba(129,199,132,0.5)",
+      "positiveColor": "rgba(0,0,0,0.1)",
+      "negativeColor": "rgba(0,0,0,0.1)",
+      "lowerLineColor": "rgb(129,199,132)",
+      "higherLineColor": "rgb(129,199,132)"
+    }
+  },
+  "bb-ema-ribbon": {
+    "script": "src = sma($price.close, options.maLength)\na = sma(Math.pow(src,2),options.bbLength)\nb = Math.pow(sum(src,options.bbLength),2)/Math.pow(options.bbLength,2)\nstdev = Math.sqrt(a - b)\ndev = options.mult * stdev\nbasis = sma(src, options.bbLength)\nupper = basis + dev\nlower = basis - dev\nsrcTwo=($price.close + $price.low + $price.high) / 3\nemaSlow = ema(srcTwo, options.emaSlowLength)\nemaFast = ema(srcTwo, options.emaFastLength)\nplotcloudarea(lower, upper, positiveColor=options.slowRibbonColor, negativeColor=options.slowRibbonColor)\nplotcloudarea(emaSlow, emaFast)",
+    "name": "Ribbon",
+    "options": {
+      "priceScaleId": "right",
+      "maLength": 200,
+      "bbLength": 50,
+      "mult": 3,
+      "emaSlowLength": 50,
+      "emaFastLength": 20,
+      "slowRibbonColor": "rgba(255,204,128,0.1)",
+      "higherLineColor": "rgba(0,0,0,0)",
+      "lowerLineColor": "rgba(0,0,0,0)",
+      "negativeColor": "rgba(255,167,38,0.25)",
+      "positiveColor": "rgba(255,167,38,0.25)"
+    }
+  },
+  "vwap": {
+    "script": "var src = ($price.high + $price.low + $price.close)/3\nvar vol=vbuy+vsell\nvar sumVol = cum(vol)\nvar sumSrcVol = cum(src * vol)\nvar sumSrcSrcVol = cum(vol*Math.pow(src, 2))\nvar VWAP = sumSrcVol / sumVol \nvar variance = sumSrcSrcVol / sumVol - Math.pow(VWAP, 2)\nvar stDev = Math.sqrt(variance < 0 ? 0 : variance)\n\t\nline(VWAP)\ncloudarea(VWAP - stDev * options.stdevMultiplier, VWAP + stDev * options.stdevMultiplier)\n\nvar unixDays = time / 60 / 60 / 24 + 3\nif (unixDays % (options.sessionLengthInDays) === 0) {\n  fns[0].state = {}\n  fns[1].state = {}\n  fns[2].state = {}\n}",
+    "name": "VWAP",
+    "options": {
+      "priceScaleId": "right",
+      "stdevMultiplier": 1,
+      "color": "rgb(41,98,255)",
+      "sessionLengthInDays": 7
+    }
+  },
+  "rsi": {
+    "script": "src = $price.close\nchange = src - src[1]\nup = ema(Math.max(change, 0), options.length)\ndown = ema(-Math.min(change, 0), options.length)\nrsi = down == 0 ? 100 : up == 0 ? 0 : 100 - (100 / (1 + up / down))\nline(80, color=options.thresholdColor)\nline(20, color=options.thresholdColor)\nline(rsi)",
+    "name": "RSI",
+    "options": {
+      "priceScaleId": "rsi",
+      "scaleMargins": {
+        "top": 0.01,
+        "bottom": 0.83
+      },
+      "thresholdColor": "rgba(255,255,255,0.5)",
+      "color": "rgb(255,255,255)",
+      "length": 14
+    }
+  }
+}

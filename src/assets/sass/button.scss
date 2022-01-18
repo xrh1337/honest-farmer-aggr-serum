@@ -1,0 +1,274 @@
+button {
+  color: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: inherit;
+  text-transform: uppercase;
+  font-family: $font-condensed;
+  padding: 0.5em;
+  border: 0;
+  border-radius: 4px;
+  color: inherit;
+  line-height: 1;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  .lds-spinner {
+    font-size: inherit;
+    margin-left: .5em;
+  }
+
+  &.-loading {
+    pointer-events: none;
+  }
+
+
+  &:focus {
+    box-shadow: 0 0 0 6px rgba($green, 0.1);
+
+    &.-text {
+      box-shadow: none;
+      background: var(--theme-color-o20);
+    }
+  }
+
+  background-color: $green;
+
+  &:hover {
+    background-color: lighten($green, 10%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &.-block {
+    width: 100%;
+  }
+
+  &.-small {
+    font-size: 0.75em;
+  }
+
+  &.-large {
+    font-size: 1.125em;
+  }
+
+  &.-outline {
+    background: 0;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+  }
+
+  &.-cases {
+    text-transform: none;
+  }
+
+  &.-icon {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+  }
+
+  &.-red {
+    background-color: $red;
+    border: 1px solid $red;
+    color: white;
+
+    &.-text {
+      color: lighten($red, 5%);
+
+      &:focus {
+        background-color: rgba($red, 0.2);
+      }
+    }
+
+    &.-outline {
+      color: $red;
+      background: 0;
+
+      &:hover {
+        color: white;
+        border-color: lighten($red, 10%);
+      }
+    }
+
+    &:hover {
+      background-color: lighten($red, 5%);
+      border-color: lighten($red, 5%);
+
+      &.-text {
+        background: 0;
+        color: lighten($red, 10%);
+        border-color: transparent;
+      }
+    }
+  }
+
+  &.-blue {
+    color: white;
+    background-color: $blue;
+    border: 1px solid $blue;
+
+    &.-text {
+      color: $blue;
+
+      &:focus {
+        background-color: rgba($blue, 0.2);
+      }
+    }
+
+    &.-outline {
+      color: $blue;
+      background: 0;
+
+      &:hover {
+        color: white;
+        border-color: lighten($blue, 10%);
+      }
+    }
+
+    &:hover {
+      background-color: lighten($blue, 10%);
+      border-color: lighten($blue, 10%);
+
+      &.-text {
+        background: 0;
+        color: lighten($blue, 10%);
+        border-color: transparent;
+      }
+    }
+  }
+
+  &.-accent {
+    background-color: var(--theme-background-100);
+    border-color: var(--theme-background-100);
+    border: 1px solid var(--theme-background-100);
+    color: 1px solid var(--theme-color-base);
+
+    &.-text {
+      color: var(--theme-background-300);
+
+      &:focus {
+        background-color: var(--theme-background-100);
+      }
+    }
+
+    &.-outline {
+      color: var(--theme-background-300);
+      background: 0;
+
+      &:hover {
+        color: white;
+        border-color: var(--theme-background-150);
+      }
+    }
+
+    &:hover {
+      background-color: var(--theme-background-150);
+      border-color: var(--theme-background-150);
+
+      &.-text {
+        background: 0;
+        color: var(--theme-color-100);
+        border-color: transparent;
+      }
+    }
+  }
+
+  &.-accent-200 {
+    background-color: var(--theme-background-200);
+    border-color: var(--theme-background-200);
+    border: 1px solid var(--theme-background-200);
+  }
+
+  &.-green {
+    background-color: $green;
+    border: 1px solid $green;
+    color: white;
+
+    &.-text {
+      color: $green;
+
+      &:focus {
+        background-color: rgba($green, 0.2);
+      }
+    }
+
+    &.-outline {
+      color: $green;
+      background: 0;
+
+      &:hover {
+        color: white;
+        border-color: lighten($green, 10%);
+      }
+    }
+
+    &:hover {
+      background-color: lighten($green, 10%);
+      border-color: lighten($green, 10%);
+
+      &.-text {
+        background: 0;
+        color: lighten($green, 10%);
+        border-color: transparent;
+      }
+    }
+  }
+
+  &.-text {
+    background-color: transparent;
+    border: transparent 1px solid;
+  }
+
+  &.-file {
+    position: relative;
+
+    input[type='file'] {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.-pill {
+    position: relative;
+
+    .badge {
+      top: -0.5em;
+      right: -0.5em;
+      position: absolute;
+      z-index: 1;
+
+      + span {
+        padding-right: 0.5em;
+      }
+    }
+  }
+}
+
+a {
+  color: currentColor;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: currentColor;
+  }
+
+  &.-text {
+    text-decoration: none;
+  }
+}

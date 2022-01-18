@@ -1,0 +1,229 @@
+[
+  {
+    "name": "threshold:bongo 🥁",
+    "type": "threshold",
+    "data": {
+      "0": {
+        "buyAudio": "playurl(https://d7d3471nr939s.cloudfront.net/DeepHouseSessions_Noiz_SP/MP3/One+Shots/Bongo_08_73_SP.mp3?cb=6cfb91bb-f15f-432a-bfae-17ef22b22005, gain * .75)",
+        "sellAudio": "playurl(https://d7d3471nr939s.cloudfront.net/DeepHouseSessions_Noiz_SP/MP3/One+Shots/Bongo_13_73_SP.mp3?cb=6ff3b374-9c98-4d3e-9f8e-4f02eef40c8e, gain * .75)"
+      },
+      "1": {
+        "buyAudio": "playurl(https://d7d3471nr939s.cloudfront.net/SaharanRhythms_Noiz_SP/MP3/One+Shots/BongoHighFlam_SP_223_01.mp3?cb=4d88d832-850d-4ad1-9e89-a23b3cbdfb89, gain)",
+        "sellAudio": "playurl(https://d7d3471nr939s.cloudfront.net/SaharanRhythms_Noiz_SP/MP3/One+Shots/BongoLowFlamQuiet_SP_223_01.mp3?cb=ae87962f-a948-484e-a2dc-392c41f14105, gain)"
+      },
+      "2": {
+        "buyAudio": "playurl(https://d7d3471nr939s.cloudfront.net/SaharanRhythms_Noiz_SP/MP3/One+Shots/BongoHighRoll_SP_223_01.mp3?cb=6d81f0bb-9e13-4404-aae5-02bce10d2a0a, gain)",
+        "sellAudio": "playurl(https://d7d3471nr939s.cloudfront.net/SaharanRhythms_Noiz_SP/MP3/One+Shots/BongoLowRoll_SP_223_01.mp3?cb=39110d56-d2cd-4be7-8e1f-d2f1c9f677cf, gain)"
+      },
+      "3": {
+        "buyAudio": "playurl(https://d7d3471nr939s.cloudfront.net/CinematicPercussion_Noiiz_SP/MP3/One+Shots/Chimes+&+Bells/TubularBell_5_Mallet_395_SP.mp3?cb=2baef87d-892e-4704-8068-26d15072850c, gain / 2, 30)",
+        "sellAudio": "playurl(https://d7d3471nr939s.cloudfront.net/CinematicPercussion_Noiiz_SP/MP3/One+Shots/Chimes+&+Bells/TubularBell_7_Mallet_395_SP.mp3?cb=dfd72abd-0bdc-4d0e-8085-dea85017a49c, gain / 2, 20)"
+      },
+      "liquidations": {
+        "buyAudio": "playurl(https://d7d3471nr939s.cloudfront.net/PlasticDrums_Noiiz/MP3/One+Shots/Kitchen+Kit/D_WaterBottleTom_01_631.mp3?cb=d1d46d16-81be-4674-875c-6c55cb54c797, gain)",
+        "sellAudio": "playurl(https://d7d3471nr939s.cloudfront.net/PlasticDrums_Noiiz/MP3/One+Shots/Kitchen+Kit/C%23_PlasticBottleKick_01_631.mp3?cb=eb673166-02a6-43b9-8187-daf05ea65a16, gain)"
+      }
+    }
+  },
+  {
+    "name": "indicator:price:default",
+    "type": "indicator",
+    "version": "3.0.8",
+    "data": {
+      "options": {
+        "upColor": "rgba(100, 157, 102, 0)",
+        "downColor": "rgb(156,52,62)",
+        "borderUpColor": "rgb(59, 202, 109)",
+        "borderDownColor": "rgb(239,67,82)",
+        "wickUpColor": "rgb(59, 202, 109)",
+        "wickDownColor": "rgb(239,67,82)",
+        "borderVisible": true,
+        "lastValueVisible": true,
+        "priceLineColor": "rgba(255, 255, 255, .5)",
+        "priceLineVisible": true
+      }
+    }
+  },
+  {
+    "name": "indicator:price:blue",
+    "type": "indicator",
+    "version": "3.0.8",
+    "data": {
+      "options": {
+        "upColor": "rgba(33, 150, 243, 0)",
+        "borderUpColor": "rgb(255, 255, 255)",
+        "wickUpColor": "rgba(255, 255, 255, .45)",
+        "downColor": "rgba(66, 165, 245, .47)",
+        "borderDownColor": "rgb(255, 255, 255, .33)",
+        "wickDownColor": "rgb(100, 181, 246, .53)",
+        "borderVisible": true,
+        "lastValueVisible": true,
+        "priceLineColor": "rgba(255, 255, 255, .5)",
+        "priceLineVisible": true
+      }
+    }
+  },
+  {
+    "name": "indicator:price:light",
+    "type": "indicator",
+    "version": "3.0.8",
+    "data": {
+      "options": {
+        "upColor": "rgb(165,214,167)",
+        "downColor": "rgb(239,154,154)",
+        "borderUpColor": "rgb(102,187,106)",
+        "borderDownColor": "rgb(229,115,115)",
+        "wickUpColor": "rgb(102,187,106)",
+        "wickDownColor": "rgb(239,154,154)",
+        "priceLineColor": "rgba(0,0,0,0.5)"
+      }
+    }
+  },
+  {
+    "name": "threshold:100k+",
+    "type": "threshold",
+    "data": {
+      "0": {
+        "amount": 100000
+      },
+      "1": {
+        "amount": 250000
+      },
+      "2": {
+        "amount": 1000000
+      },
+      "3": {
+        "amount": 10000000
+      }
+    }
+  },
+  {
+    "name": "threshold:250k+",
+    "type": "threshold",
+    "data": {
+      "0": {
+        "amount": 250000
+      },
+      "1": {
+        "amount": 500000
+      },
+      "2": {
+        "amount": 2000000
+      },
+      "3": {
+        "amount": 10000000
+      }
+    }
+  },
+  {
+    "name": "threshold:default colors",
+    "type": "threshold",
+    "version": "3.0.8",
+    "data": {
+      "liquidations": [
+        {
+          "buyColor": "rgba(236,64,122,0.5)",
+          "sellColor": "rgba(255,152,0,0.5)"
+        },
+        {
+          "buyColor": "rgba(236,64,122,0.6)",
+          "sellColor": "rgba(255,152,0,0.7)"
+        },
+        {
+          "buyColor": "rgba(236,64,122,0.7)",
+          "sellColor": "rgba(255,152,0,0.8)"
+        },
+        {
+          "buyColor": "rgb(156,39,176)",
+          "sellColor": "rgb(255,235,59)"
+        }
+      ],
+      "thresholds": [
+        {
+          "buyColor": "rgba(119, 148, 92, 0.25)",
+          "sellColor": "rgba(239, 67, 82, 0.25)"
+        },
+        {
+          "buyColor": "rgb(100, 157, 102)",
+          "sellColor": "rgb(239, 67, 82)"
+        },
+        {
+          "buyColor": "rgb(59, 202, 109)",
+          "sellColor": "rgb(235, 30, 47)"
+        },
+        {
+          "buyColor": "rgb(0, 255, 127)",
+          "sellColor": "rgb(217, 31, 28)"
+        }
+      ]
+    }
+  },
+  {
+    "name": "threshold:legacy colors",
+    "type": "threshold",
+    "version": "3.0.8",
+    "data": {
+      "thresholds": [
+        {
+          "buyColor": "rgba(76,175,80,0.33)",
+          "sellColor": "rgba(229,115,115,.33)"
+        },
+        {
+          "buyColor": "rgb(91,130,48)",
+          "sellColor": "rgb(224,91,82)"
+        },
+        {
+          "buyColor": "rgb(156,204,101)",
+          "sellColor": "rgb(244,67,54)"
+        },
+        {
+          "buyColor": "rgb(255,160,0)",
+          "sellColor": "rgb(233,30,99)"
+        }
+      ]
+    }
+  },
+  {
+    "name": "threshold:saturated colors",
+    "type": "threshold",
+    "version": "3.0.8",
+    "data": {
+      "thresholds": [
+        {
+          "buyColor": "rgba(119,148,92,0.5)",
+          "sellColor": "rgba(217,31,28,0.5)"
+        },
+        {
+          "buyColor": "rgb(100, 157, 102)",
+          "sellColor": "rgb(157,20,20)"
+        },
+        {
+          "buyColor": "rgb(59, 202, 109)",
+          "sellColor": "rgb(180,23,23)"
+        },
+        {
+          "buyColor": "rgb(0, 255, 127)",
+          "sellColor": "rgb(217, 31, 28)"
+        }
+      ],
+      "liquidations": [
+        {
+          "buyColor": "rgba(255,76,243,0.25)",
+          "sellColor": "rgba(255,152,0,0.5)"
+        },
+        {
+          "buyColor": "rgb(57,32,120)",
+          "sellColor": "rgba(255,152,0,0.7)"
+        },
+        {
+          "buyColor": "rgb(78,44,169)",
+          "sellColor": "rgba(255,152,0,0.8)"
+        },
+        {
+          "buyColor": "rgb(117,66,244)",
+          "sellColor": "rgb(255,235,59)"
+        }
+      ]
+    }
+  }
+]

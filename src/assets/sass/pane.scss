@@ -1,0 +1,270 @@
+.vue-grid-layout {
+  .vue-grid-item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+    touch-action: none;
+    overflow: hidden;
+
+    > .vue-resizable-handle {
+      display: none;
+      width: auto;
+      height: auto;
+      background: 0;
+      font-size: 1em;
+      padding: 0em 3em 3em 0em;
+      width: 2em;
+      height: 2em;
+      opacity: 0.5;
+      line-height: 0.5em;
+      text-align: center;
+      z-index: 2;
+      margin: 0.5em;
+
+      &:before {
+        font-family: 'icon';
+        content: $icon-up-thin;
+        transform: rotateZ(-225deg) scale(1);
+        display: block;
+        font-size: 2em;
+        width: 1em;
+        height: 1em;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      > .vue-resizable-handle {
+        display: block;
+      }
+
+      .toolbar {
+        display: flex;
+      }
+
+      overflow: visible;
+    }
+
+    &.vue-grid-placeholder {
+      background-color: var(--theme-background-300);
+    }
+
+    &.-highlight {
+      z-index: 1;
+      overflow: visible;
+
+      .pane {
+        z-index: 4;
+
+        .pane-header {
+          display: flex;
+          z-index: 15;
+
+          .toolbar {
+            display: flex;
+          }
+        }
+      }
+    }
+
+    &.-maximized {
+      width: 100% !important;
+      height: 100vh !important;
+      position: fixed !important;
+      transform: none !important;
+      background: var(--theme-background-base);
+      z-index: 1;
+    }
+  }
+}
+
+#app.-auto-hide-headers {
+  .pane {
+    .pane-header {
+      display: none;
+      position: absolute;
+
+      .toolbar {
+        display: flex;
+      }
+    }
+
+    &:hover {
+      .pane-header {
+        display: flex;
+      }
+    }
+  }
+
+  .vue-grid-item.-highlight {
+    .pane-header {
+      display: flex;
+      opacity: 1;
+    }
+  }
+}
+
+.pane-overlay {
+  background-color: rgba(black, 0.5);
+}
+
+#app.-light {
+  .vue-grid-item {
+    > .vue-resizable-handle:hover {
+      background-color: var(--theme-background-o20);
+    }
+  }
+
+  .pane {
+    background-color: rgba(white, 0.1);
+
+    .pane-overlay {
+      background-color: var(--theme-background-o75);
+    }
+
+    /*.pane-header,
+    .pane-header button,
+    .pane-header button i:before,
+    .pane-overlay {
+      font-weight: 600;
+    }*/
+  }
+}
+
+.pane {
+  position: relative;
+  background-color: rgba(black, 0.1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &.-large .pane-header + div {
+    font-weight: 500;
+  }
+}
+
+.pane-header {
+  display: flex;
+  position: relative;
+  z-index: 4;
+  top: 0;
+  font-size: calc(11px + 0.8em);
+  height: 1.5em;
+  min-width: 100%;
+  background-color: rgba(black, 0.5);
+  backdrop-filter: blur(1em);
+  align-items: stretch;
+  flex-shrink: 0;
+  cursor: move;
+
+  .toolbar {
+    display: none;
+  }
+
+  &__name {
+    font-family: $font-condensed;
+    font-size: 0.64em;
+    align-self: center;
+    display: block;
+    line-height: 1;
+    padding: 0 0.4em 0.1em;
+  }
+
+  &__divider {
+    width: 1px;
+    background-color: var(--theme-color-o75);
+    margin: .4em .4em;
+  }
+
+  &__loader {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      background-clip: padding-box;
+      transition: background-color 0.4s $ease-out-expo;
+    }
+  }
+
+  &.-loading {
+    .pane-header__loader {
+      display: block;
+
+      &:before,
+      &:after {
+        display: block;
+      }
+      &:before {
+        background-color: var(--theme-background-o20);
+        animation: indeterminate-loading-bar-slow 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      }
+
+      &:after {
+        background-color: var(--theme-background-o75);
+        animation: indeterminate-loading-bar-fast 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        animation-delay: 1.15s;
+      }
+    }
+
+    + div {
+      cursor: wait;
+    }
+  }
+
+  @keyframes indeterminate-loading-bar-slow {
+    0% {
+      left: -35%;
+      right: 100%;
+    }
+
+    60% {
+      left: 100%;
+      right: -90%;
+    }
+
+    100% {
+      left: 100%;
+      right: -90%;
+    }
+  }
+
+  @keyframes indeterminate-loading-bar-fast {
+    0% {
+      left: -200%;
+      right: 100%;
+    }
+
+    60% {
+      left: 107%;
+      right: -8%;
+    }
+
+    100% {
+      left: 107%;
+      right: -8%;
+    }
+  }
+}
+
+body.-unselectable #app.-auto-hide-headers .pane-header {
+  display: none !important;
+}
