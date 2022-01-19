@@ -40,6 +40,8 @@ npm run serve
 This will automatically open a browser window at localhost:8080
 
 
+Project is based on aggr.trade (SignificantTrades) ([Github](https://github.com/Tucsky/aggr)) and original readme of the project is below:
+
 # SignificantTrades [![Build Status](https://travis-ci.org/Tucsky/aggr.svg?branch=master)](https://travis-ci.org/Tucsky/aggr)
 
   
