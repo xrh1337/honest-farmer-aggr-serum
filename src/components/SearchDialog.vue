@@ -106,11 +106,11 @@
               <label class="checkbox-control -small mb4 -custom" :key="id" v-if="!$store.state.exchanges[id].disabled">
                 <input
                   type="checkbox"
-                  class="form-control"
+                  :class="'form-control checkbox-' + id"
                   :checked="searchExchanges[id] !== false"
                   @change="$store.commit('settings/TOGGLE_SEARCH_EXCHANGE', id)"
                 />
-                <div :class="'icon-' + id"></div>
+                <div :class="(searchExchanges[id] !== false ? 'icon-' + id : '')"></div>
                 <span>
                   <span v-text="id"></span>
                   <a v-if="canRefreshProducts" href="javascript:void(0);" class="-text" @click="refreshExchangeProducts(id)" title="Refresh products">
