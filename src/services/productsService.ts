@@ -47,6 +47,8 @@ export async function fetchProducts(exchangeId: string, endpoints: string[]): Pr
 
   let data = []
 
+  const customDexes = ['SERUM', 'MANGO'];
+
   for (const instruction of endpoints) {
     let [url, method] = instruction.split('|')
 
@@ -54,7 +56,7 @@ export async function fetchProducts(exchangeId: string, endpoints: string[]): Pr
       method = 'GET'
     }
 
-    if (process.env.VUE_APP_PROXY_URL && !/^https:\/\/raw.githubusercontent.com\//.test(url) && exchangeId !== 'SERUM') {
+    if (process.env.VUE_APP_PROXY_URL && !/^https:\/\/raw.githubusercontent.com\//.test(url) && !customDexes.includes(exchangeId)) {
       url = process.env.VUE_APP_PROXY_URL + url
     }
 

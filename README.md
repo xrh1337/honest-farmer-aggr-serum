@@ -1,6 +1,6 @@
 # Honest Farmer
 
-Serum markets integration for [v3.aggr.trade](https://v3.aggr.trade). More info about SignificantTrades (aggr.trade) below.
+Serum/Mango markets integration for [v3.aggr.trade](https://v3.aggr.trade). More info about SignificantTrades (aggr.trade) below.
 
 ## How to install & run locally
 
@@ -9,13 +9,18 @@ Serum markets integration for [v3.aggr.trade](https://v3.aggr.trade). More info 
 npx serum-vial
 ```
 
+or run [mango-bowl](https://github.com/tardis-dev/mango-bowl) locally on port 8010
+```bash
+npx mango-bowl
+```
 2. Install CORS extension to add cors headers in response.
    
    for e.g. [EASY CORS](https://chrome.google.com/webstore/detail/easy-cors/gcdaaelgdlicnnichhholnoagafangej) (chrome)
     
     ```bash
     localhost:8080
-    localhost:8000
+    localhost:8000 (for serum-vial)
+    localhost:8010 (for mango-bowl)
     ```
     activate the extension and add localhost urls for serum-vial and aggr trade
 

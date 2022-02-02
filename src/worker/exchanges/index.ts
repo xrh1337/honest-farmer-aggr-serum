@@ -17,6 +17,7 @@ import Bybit from './bybit'
 import Ftx from './ftx'
 import Phemex from './phemex'
 import Serum from './serum'
+import Mango from './mango'
 
 export const exchanges = [
   new Bitmex(),
@@ -35,7 +36,8 @@ export const exchanges = [
   new Bybit(),
   new Ftx(),
   new Phemex(),
-  new Serum()
+  new Serum(),
+  new Mango(),
 ] as Exchange[]
 
 export function getExchangeById(id: string) {
