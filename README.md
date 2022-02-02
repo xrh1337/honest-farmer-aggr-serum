@@ -1,5 +1,5 @@
 # Honest Farmer
-[Webiste](https://www.honest.space) 
+[Website](https://www.honest.space) 
 
 ![AggrTrade - Serum & Mango Markets](https://github.com/xrh1337/honest-farmer-aggr-serum/blob/main/demo.gif?raw=true)
 
