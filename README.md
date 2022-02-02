@@ -1,4 +1,5 @@
 # Honest Farmer
+![AggrTrade - Serum & Mango Markets](https://github.com/xrh1337/honest-farmer-aggr-serum/blob/main/demo.gif?raw=true)
 
 Serum/Mango markets integration for [v3.aggr.trade](https://v3.aggr.trade). More info about SignificantTrades (aggr.trade) below.
 
