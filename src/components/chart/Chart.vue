@@ -72,6 +72,8 @@
     <div class="chart-overlay -right chart__controls" :style="{ marginRight: axis[0] + 'px' }">
       <button class="chart__screenshot btn -text -large" @click="takeScreenshot"><i class="icon-add-photo"></i></button>
     </div>
+    <div class="chart-gif-indicator" v-bind:style="{backgroundImage: 'url(' + gifIndicator + ')'}">
+    </div>
     <div class="chart__container" ref="chartContainer">
       <chart-layout v-if="layouting" :pane-id="paneId" :layouting="layouting" :axis="axis"></chart-layout>
     </div>
@@ -113,6 +115,11 @@ import { Chunk } from './chartCache'
     IndicatorControl,
     ChartLayout,
     PaneHeader
+  },
+  computed: {
+      gifIndicator(){
+        return this.$store.state.app.gifIndicator
+      }
   }
 })
 export default class extends Mixins(PaneMixin) {
@@ -1015,6 +1022,18 @@ export default class extends Mixins(PaneMixin) {
   &.-loading {
     cursor: wait;
   }
+}
+
+.chart-gif-indicator {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  opacity: 0.25;
+  width: 128px;
+  height: 128px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .chart__container {

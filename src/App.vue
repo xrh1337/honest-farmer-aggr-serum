@@ -54,8 +54,9 @@ import Menu from './components/Menu.vue'
 
 import Panes from '@/components/panes/Panes.vue'
 
-import upFavicon from './assets/up.png'
-import downFavicon from './assets/down.png'
+import upFavicon from './assets/favicons/goku/up.gif'
+import downFavicon from './assets/favicons/goku/down.gif'
+import neutralFavicon from './assets/favicons/goku/neutral.gif'
 
 import { formatMarketPrice } from './utils/helpers'
 import { Notice } from './store/app'
@@ -177,6 +178,8 @@ export default class extends Vue {
           this.updateFavicon('up')
         } else if (price < +this.price) {
           this.updateFavicon('down')
+        } else {
+          this.updateFavicon('neutral')
         }
       }
 
@@ -201,15 +204,23 @@ export default class extends Vue {
       this._faviconElement = document.createElement('link')
       this._faviconElement.id = 'favicon'
       this._faviconElement.rel = 'shortcut icon'
+      this._faviconElement.type = 'image/gif'
 
       document.head.appendChild(this._faviconElement)
     }
 
     if (direction === 'up') {
-      this._faviconElement.href = upFavicon
-    } else {
+      this._faviconElement.href = upFavicon;
+      this.$store.commit('app/SET_GIF_INDICATOR', this.$store.state.chart.gifIndicatorUp);
+    } else if(direction === 'down') {
       this._faviconElement.href = downFavicon
+      this.$store.commit('app/SET_GIF_INDICATOR', this.$store.state.chart.gifIndicatorDown);
+    } else {
+      this._faviconElement.href = neutralFavicon;
+      this.$store.commit('app/SET_GIF_INDICATOR', this.$store.state.chart.gifIndicatorNeutral);
     }
+
+
   }
 
   onDocumentKeyPress(event: KeyboardEvent) {

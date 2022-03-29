@@ -52,6 +52,9 @@ export interface ChartPaneState {
   watermarkColor: string
   hiddenMarkets: { [indicatorId: string]: boolean }
   barSpacing: number
+  gifIndicatorUp: string
+  gifIndicatorDown: string
+  gifIndicatorNeutral: string
 }
 
 const getters = {} as GetterTree<ChartPaneState, ModulesState>
@@ -80,7 +83,10 @@ const state = {
   showWatermark: false,
   watermarkColor: 'rgba(255,255,255,.1)',
   hiddenMarkets: {},
-  barSpacing: null
+  barSpacing: null,
+  gifIndicatorUp: 'https://i.gifer.com/ZLBh.gif',
+  gifIndicatorDown: 'https://i.gifer.com/3klP.gif',
+  gifIndicatorNeutral: 'https://i.gifer.com/Z5cM.gif'
 } as ChartPaneState
 
 const actions = {
@@ -288,6 +294,15 @@ const mutations = {
         state.horizontalGridlinesColor = value
       }
     }
+  },
+  SET_GIF_INDICATOR_UP(state, gifURL) {
+    state.gifIndicatorUp = gifURL
+  },
+  SET_GIF_INDICATOR_DOWN(state, gifURL) {
+    state.gifIndicatorDown = gifURL
+  },
+  SET_GIF_INDICATOR_NEUTRAL(state, gifURL) {
+    state.gifIndicatorNeutral = gifURL
   },
   SET_WATERMARK(state, { value }) {
     if (typeof value === 'boolean') {

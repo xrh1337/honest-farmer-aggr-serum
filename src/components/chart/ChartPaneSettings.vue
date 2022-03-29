@@ -102,6 +102,44 @@
         </label>
       </div>
     </div>
+    <div class="form-group">
+      <label>
+        GIF indicator up:
+        <br/>
+        <input
+          type="text"
+          placeholder="Giphy"
+          :value="gifIndicatorUp"
+          @change="
+            $store.commit(paneId + '/SET_GIF_INDICATOR_UP', $event.target.value)
+          "
+        />
+      </label>
+      <label>
+        GIF indicator neutral:
+        <br/>
+        <input
+          type="text"
+          placeholder="Giphy"
+          :value="gifIndicatorNeutral"
+          @change="
+            $store.commit(paneId + '/SET_GIF_INDICATOR_NEUTRAL', $event.target.value)
+          "
+        />
+      </label>
+      <label>
+        GIF indicator down:
+        <br/>
+        <input
+          type="text"
+          placeholder="Giphy"
+          :value="gifIndicatorDown"
+          @change="
+            $store.commit(paneId + '/SET_GIF_INDICATOR_DOWN', $event.target.value)
+          "
+        />
+      </label>
+    </div>
   </div>
 </template>
 
@@ -135,6 +173,18 @@ export default class extends Vue {
     return this.$store.state[this.paneId].forceNormalizePrice
   }
 
+  get gifIndicatorUp() {
+    return this.$store.state[this.paneId].gifIndicatorUp
+  }
+  
+  get gifIndicatorDown() {
+    return this.$store.state[this.paneId].gifIndicatorDown
+  }
+  
+  get gifIndicatorNeutral() {
+    return this.$store.state[this.paneId].gifIndicatorNeutral
+  }
+  
   get refreshRate() {
     return this.$store.state[this.paneId].refreshRate
   }

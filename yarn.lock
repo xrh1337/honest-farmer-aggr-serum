@@ -6258,6 +6258,7 @@
     "type-check" "~0.3.2"
 
 "lightweight-charts@https://github.com/Tucsky/lightweight-charts.git#bcc7239bcc8119e0c6b8c4b143532be6124e97da":
+  "integrity" "sha512-C6nigOz7kNiIXH05zp2fJ1C6VKxg07RAXv1BsFadHYSIK+e/bl5R7qa2nxYQgA+heFh1qSWpFrwE7i9sIPTxqg=="
   "resolved" "git+ssh://git@github.com/Tucsky/lightweight-charts.git#bcc7239bcc8119e0c6b8c4b143532be6124e97da"
   "version" "3.8.0"
   dependencies:

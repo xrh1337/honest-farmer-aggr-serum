@@ -1,7 +1,11 @@
 import { ProductsData, ProductsStorage } from '@/types/test'
 import { EventEmitter } from 'eventemitter3'
+import mango from './exchanges/mango';
 import { dispatchAsync } from './helpers/com'
 import { getHms, randomString } from './helpers/utils'
+import mangoMarkets from './mango-markets.json';
+import serumMarkets from './serum-markets.json';
+
 interface Api extends WebSocket {
   _id: string
   _pending: string[]
@@ -430,20 +434,21 @@ class Exchange extends EventEmitter {
     // ask client for exchange's products
     // will either retrieve stored or fetch new
     // fetched product will be sent back to worker for formatting then back to client
-    const storage = (await dispatchAsync({
-      op: 'getExchangeProducts',
-      data: {
-        exchangeId: this.id,
-        endpoints: this.endpoints.PRODUCTS,
-        forceFetch: forceFetch
+      const storage = (await dispatchAsync({
+        op: 'getExchangeProducts',
+        data: {
+          exchangeId: this.id,
+          endpoints: this.endpoints.PRODUCTS,
+          forceFetch: forceFetch
+        }
+      })) as ProductsStorage
+  
+      console.log("data", storage.data);
+      if (this.setProducts(storage.data) === false) {
+        return this.getProducts(true)
       }
-    })) as ProductsStorage
-
-    if (this.setProducts(storage.data) === false) {
-      return this.getProducts(true)
-    }
-
-    // this.setProducts(storage.data)
+  
+      // this.setProducts(storage.data)
   }
 
   /**

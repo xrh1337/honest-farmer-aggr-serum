@@ -7,7 +7,7 @@ export default class extends Exchange {
     protected endpoints = { PRODUCTS: 'http://localhost:8000/v1/markets' };
 
     getUrl() {
-        return 'ws://localhost:8000/v1/ws';
+        return 'ws://serum.honest.space/v1/ws';
     };
 
     formatProducts(data) {

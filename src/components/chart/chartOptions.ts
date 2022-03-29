@@ -84,7 +84,7 @@ export const defaultCandlestickOptions = {
   borderUpColor: '#c3a87a',
   borderDownColor: '#e53935',
   wickUpColor: 'rgba(223, 195, 148, .8)',
-  wickDownColor: 'rgba(224, 91, 95, .8)'
+  wickDownColor: 'rgba(224, 91, 95, .8)',
 }
 
 export const defaultBaselineOptions = {

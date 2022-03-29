@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "prod": "vue-cli-service build --dest ./temp && rm -rf ./dist && mv ./temp ./dist",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target wc --inline-vue --name aggr-trade ./src/main.ts",
     "lint": "vue-cli-service lint",
     "deploy": "node scripts/gh-pages-deploy.js"
   },

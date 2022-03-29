@@ -5,6 +5,7 @@ import { ActionTree, GetterTree, Module, MutationTree } from 'vuex'
 import { ModulesState } from '.'
 import SearchDialog from '../components/SearchDialog.vue'
 import TimeframeDialog from '../components/TimeframeDialog.vue'
+import neutralFavicon from '../assets/favicons/goku/neutral.gif'
 
 export interface Notice {
   id?: string
@@ -65,6 +66,7 @@ export interface AppState {
   quoteCurrency: string
   quoteCurrencySymbol: string
   focusedPaneId: string
+  gifIndicator: string
 }
 
 const state = {
@@ -86,7 +88,8 @@ const state = {
   baseCurrencySymbol: '฿',
   quoteCurrency: 'dollar',
   quoteCurrencySymbol: '$',
-  focusedPaneId: null
+  focusedPaneId: null,
+  gifIndicator: neutralFavicon
 } as AppState
 
 const actions = {
@@ -211,6 +214,9 @@ const actions = {
 const mutations = {
   SET_BOOTED: (state, value: boolean) => {
     state.isBooted = value
+  },
+  SET_GIF_INDICATOR: (state, value: string) => {
+    state.gifIndicator = value
   },
   SET_EXCHANGES_READY(state) {
     state.isExchangesReady = true
