@@ -4,10 +4,10 @@ import Exchange from '../exchange';
 export default class extends Exchange {
 
     id = 'MANGO';
-    protected endpoints = { PRODUCTS: 'http://localhost:8010/v1/markets' };
+    protected endpoints = { PRODUCTS: 'https://mango.honest.space/v1/markets' };
 
     getUrl() {
-        return 'ws://localhost:8010/v1/ws';
+        return 'ws://mango.honest.space/v1/ws';
     };
 
     formatProducts(data) {

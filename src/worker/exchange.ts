@@ -442,8 +442,7 @@ class Exchange extends EventEmitter {
           forceFetch: forceFetch
         }
       })) as ProductsStorage
-  
-      console.log("data", storage.data);
+      
       if (this.setProducts(storage.data) === false) {
         return this.getProducts(true)
       }

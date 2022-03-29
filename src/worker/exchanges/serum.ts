@@ -4,7 +4,7 @@ import Exchange from '../exchange';
 export default class extends Exchange {
 
     id = 'SERUM';
-    protected endpoints = { PRODUCTS: 'http://localhost:8000/v1/markets' };
+    protected endpoints = { PRODUCTS: 'https://serum.honest.space/v1/markets' };
 
     getUrl() {
         return 'ws://serum.honest.space/v1/ws';
