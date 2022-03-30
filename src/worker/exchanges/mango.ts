@@ -7,7 +7,7 @@ export default class extends Exchange {
     protected endpoints = { PRODUCTS: 'https://mango.honest.space/v1/markets' };
 
     getUrl() {
-        return 'ws://mango.honest.space/v1/ws';
+        return 'wss://mango.honest.space/v1/ws';
     };
 
     formatProducts(data) {
