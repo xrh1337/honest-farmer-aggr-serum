@@ -394,7 +394,12 @@ export default {
           return output
         }
 
-        output[id] = typeof searchExchanges[id] === 'undefined' ? true : searchExchanges[id]
+        output[id] = false;
+
+        if(/MANGO|KRAKEN|SERUM|FTX/.test(id)){
+          output[id] = true
+        }
+
 
         return output
       }, {})
